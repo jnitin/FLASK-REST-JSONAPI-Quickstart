@@ -165,7 +165,6 @@ $ source venv/bin/activate
 ```bash
 $ cd FLASK-REST-JSONAPI-Quickstart/quickstart3
 $ source venv/bin/activate
-(venv) $ export FLASK_APP=quickstart3.py
 (venv) $ python test/test_computers.py
 (venv) $ python test/test_relationships.py
 (venv) $ python test/test_filtering.py
