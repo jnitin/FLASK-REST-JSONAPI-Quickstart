@@ -22,20 +22,25 @@ Development and testing was done on Ubuntu 16.04.
 $ git clone https://github.com/ArjaanBuijk/FLASK-REST-JSONAPI-Quickstart
 ```
 
-2. One time: prepare the python virtual environment with Flask and several Flask extensions
+2. One time: prepare the python virtual environment
 ```bash
 $ cd FLASK-REST-JSONAPI-Quickstart/quickstart3
 $ python3 -m venv venv
 $ source venv/bin/activate
 (venv) $ pip install --upgrade pip
 (venv) $ pip install -r requirements.txt
+```
 
-		NOTE: Instead of installing the python extensions via 'requirements.txt', one can also enter:
-        (venv) $ pip install --upgrade pip
-        (venv) $ pip install flask
-        (venv) $ pip install Flask-REST-JSONAPI
-        (venv) $ pip install flask-sqlalchemy
-        (venv) $ pip install requests
+ Alternatively, instead of installing the required python packages using the file <em>'requirements.txt'</em>, which installs the specific versions that were used during development and testing, one can also enter these commands, which I had used to install the actual packages:
+```bash
+$ cd FLASK-REST-JSONAPI-Quickstart/quickstart3
+$ python3 -m venv venv
+$ source venv/bin/activate
+(venv) $ pip install --upgrade pip
+(venv) $ pip install flask
+(venv) $ pip install Flask-REST-JSONAPI
+(venv) $ pip install flask-sqlalchemy
+(venv) $ pip install requests
 ```
 
 3. Activate the python virtual environment and start the application server
