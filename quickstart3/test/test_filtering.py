@@ -11,8 +11,8 @@ import json
 from base64 import b64encode
 from my_utils import ordered
 
-"""All tests are based on:
-http://flask-rest-jsonapi.readthedocs.io/en/latest/filtering.html  # NOQA
+"""The tests are based on:
+http://flask-rest-jsonapi.readthedocs.io/en/latest/filtering.html
 """
 
 class TestConfig(Config):
@@ -35,7 +35,7 @@ class Tests(unittest.TestCase):
         self.app_context.pop()
 
     def populate_database(self):
-        """Adds 4 computers and 2 persons to the database."""
+        """Adds 4 computers and 5 persons to the database."""
         computers = ["Amstrad", "Halo", "Nestor", "Comodor"]
 
         url = '/computers'
@@ -97,6 +97,7 @@ class Tests(unittest.TestCase):
         self.assertEqual(response.status_code, expected_status_code)
 
         # Create a 2nd person, also named John that owns the 3rd computer
+        # Note that this person has a different email address
         url = '/persons?include=computers'
         headers = {
             'Content-Type': 'application/vnd.api+json',
@@ -185,10 +186,10 @@ class Tests(unittest.TestCase):
         response_data = json.loads(response.data.decode())
         self.assertEqual(response.status_code, expected_status_code)
 
-    def test_2_1_filter1(self):
+    def test_filtering(self):
         """Test some filters..."""
 
-        # First, populate the database with 4 computers
+        # First, populate the database with some computers & persons
         self.populate_database()
 
         # Get all the persons, no filters applied
@@ -272,7 +273,7 @@ class Tests(unittest.TestCase):
         # Get persons, filtered through a combination of their name or a
         # relationship to his/her computers
         # - find Mary & Dopey by their name
-        # - find John, because he owns Amstrad
+        # - find John, because he owns Amstrad (has the relationship!)
         url = """/persons?filter=
             [{"or":[{"name":"name","op":"eq","val":"John"},
                     {"name":"name","op":"eq","val":"Dopey"},
