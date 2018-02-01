@@ -5,9 +5,9 @@
 
 I took the [quickstart example of Flask-REST-JSONAPI](http://flask-rest-jsonapi.readthedocs.io/en/latest/quickstart.html#), and made 3 variations:
 
-- quickstart1: the original version, written as a single python module
-- quickstart2: refactored into a python package
-- quickstart3: refactored into a blueprint, with unit tests.
+- [quickstart](https://github.com/ArjaanBuijk/FLASK-REST-JSONAPI-Quickstart/tree/master/quickstart) : the original version, written as a single python module
+- [quickstart2](https://github.com/ArjaanBuijk/FLASK-REST-JSONAPI-Quickstart/tree/master/quickstart2): refactored into a python package
+- [quickstart3](https://github.com/ArjaanBuijk/FLASK-REST-JSONAPI-Quickstart/tree/master/quickstart3): refactored the api into a Flask blueprint, and added unit tests that demonstrate how to use the api.
 
 
 ## Filtering in Flask-REST-JSONAPI
