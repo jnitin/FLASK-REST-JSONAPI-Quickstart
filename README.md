@@ -3,7 +3,7 @@
 ---
 ## Content
 
-I took the [quickstart example of Flask-REST-JSONAPI](http://), and build 3 variations:
+I took the [quickstart example of Flask-REST-JSONAPI](http://flask-rest-jsonapi.readthedocs.io/en/latest/quickstart.html#), and made 3 variations:
 
 - quickstart1: the original version, written as a single python module
 - quickstart2: refactored into a python package
