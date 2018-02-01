@@ -289,12 +289,78 @@ class Tests(unittest.TestCase):
             }
         expected_status_code = 200
         expected_count = 3
+        expected_data = \
+        {'data':
+         [
+            {'attributes': {
+                'display_name': 'JOHN <john@gmail.com>',
+                'birth_date': '1990-12-18'
+                },
+             'id': '1',
+             'relationships': {
+                 'computers': {
+                     'links': {
+                         'self': '/persons/1/relationships/computers',
+                         'related': '/persons/1/computers'
+                         }
+                     }
+                 },
+             'type': 'person',
+             'links': {
+                 'self': '/persons/1'
+                 }
+             },
+            {'attributes': {
+                'display_name': 'JOHN <john2@gmail.com>',
+                'birth_date': '2010-12-18'
+                },
+             'id': '2',
+             'relationships': {
+                 'computers': {
+                     'links': {
+                         'self': '/persons/2/relationships/computers',
+                         'related': '/persons/2/computers'
+                         }
+                     }
+                 },
+             'type': 'person',
+             'links': {
+                 'self': '/persons/2'
+                 }
+             },
+            {'attributes': {
+                'display_name': 'DOPEY <dopey@gmail.com>',
+                'birth_date': '1931-01-12'
+                },
+             'id': '4',
+             'relationships': {
+                 'computers': {
+                     'links': {
+                         'self': '/persons/4/relationships/computers',
+                         'related': '/persons/4/computers'
+                         }
+                     }
+                 },
+             'type': 'person',
+             'links': {
+                 'self': '/persons/4'
+                 }
+             }
+         ],
+         'jsonapi': {'version': '1.0'},
+         'meta': {'count': 3},
+         'links': {
+            'self': '/persons?filter=%5B%7B%22or%22%3A%5B%7B%22name%22%3A%22name%22%2C%22op%22%3A%22eq%22%2C%22val%22%3A%22John%22%7D%2C%7B%22name%22%3A%22name%22%2C%22op%22%3A%22eq%22%2C%22val%22%3A%22Dopey%22%7D%2C%7B%22name%22%3A%22computers%22%2C%22op%22%3A%22any%22%2C%22val%22%3A%7B%22name%22%3A%22serial%22%2C%22op%22%3A%22ilike%22%2C%22val%22%3A%22%25Amstrad%25%22%7D%7D%5D%7D%5D'
+         }
+        }
         response = self.client().get(url,
-                                     headers=headers)
+                                         headers=headers)
         response_data = json.loads(response.data.decode())
         response_count = response_data['meta']['count']
         self.assertEqual(response.status_code, expected_status_code)
         self.assertEqual(response_count, expected_count)
+        self.assertListEqual(ordered(response_data),
+                             ordered(expected_data))
 
 
 if __name__ == '__main__':
