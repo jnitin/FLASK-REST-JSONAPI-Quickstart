@@ -160,3 +160,13 @@ $ source venv/bin/activate
  * Serving Flask app "quickstart3"
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
+
+4. Test it all works by running the unit tests
+```bash
+$ cd FLASK-REST-JSONAPI-Quickstart/quickstart3
+$ source venv/bin/activate
+(venv) $ export FLASK_APP=quickstart3.py
+(venv) $ python test/test_computers.py
+(venv) $ python test/test_relationships.py
+(venv) $ python test/test_filtering.py
+```
